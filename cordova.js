@@ -20,7 +20,7 @@
 */
 
 var VERSION='2.5.0';
-var PLAT = /Android/.exec(navigator.userAgent) ? 'android' : 'ios';
+var PLAT = getPlatform();
 
 var scripts = document.getElementsByTagName('script');
 var currentPath = scripts[scripts.length - 1].src;
@@ -30,7 +30,7 @@ var cordovaPath = versionCordovaPath;
 
 (function() {
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", platformCordovaPath, false);
+    xhr.open("GET", platformCordovaPath, true);
     xhr.onreadystatechange = function() {
         if (this.readyState == this.DONE && this.responseText.length > 0) {
             cordovaPath = platformCordovaPath;
@@ -50,4 +50,14 @@ function backHome() {
 	else {
 	    window.history.go(-1);
 	}
+}
+
+function getPlatform(){
+    if(/Android/.exec(navigator.userAgent)){
+        return 'android';
+    }else if(navigator.userAgent.indexOf("BB10") > -1 || navigator.userAgent.indexOf("PlayBook") > -1 || navigator.userAgent.indexOf("BlackBerry") > -1) {
+        return 'blackberry';
+    }else{
+        return 'ios';
+    }
 }
