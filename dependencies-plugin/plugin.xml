@@ -47,4 +47,5 @@
   <dependency id="org.apache.cordova.vibration"/>
   <dependency id="org.apache.cordova.test.whitelist" url="." subdir="cordova-plugin-whitelist" />
   <dependency id="org.apache.cordova.test.echo" url="." subdir="cordova-plugin-echo" />
+  <dependency id="com.msopentech.websql" />
 </plugin>
